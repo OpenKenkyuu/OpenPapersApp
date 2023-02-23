@@ -1,9 +1,7 @@
 import React from "react";
 import { useAccount } from "wagmi";
-import { useIsMounted } from "../../hooks/useIsMounted";
 
 const UploadButton = () => {
-    const mounted = useIsMounted();
     const { address } = useAccount();
 
     const handleClick = () => {
