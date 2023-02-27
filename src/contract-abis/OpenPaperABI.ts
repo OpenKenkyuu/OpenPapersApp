@@ -848,5 +848,4 @@ const OpenPaperABI = [
     }
 ];
 
-
-export default OpenPaperABI;
+export { OpenPaperABI }

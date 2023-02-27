@@ -93,4 +93,4 @@ const OpenPaperFactoryABI = [
     ]
 ];
 
-export default OpenPaperFactoryABI;
+export { OpenPaperFactoryABI };
