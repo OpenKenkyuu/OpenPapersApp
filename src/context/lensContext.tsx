@@ -63,7 +63,6 @@ export function LensProvider({ children }) {
         }
     }
 
-
     useEffect(() => {
         const readToken = window.localStorage.getItem("lensToken");
         if (readToken) {
