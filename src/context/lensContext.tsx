@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import { challenge, apolloClient, authenticate, getDefaultProfile } from "../lensApi";
+import { challenge, apolloClient, authenticate, getDefaultProfile } from "../LensApi";
 
 import { useAccount, useSignMessage } from "wagmi";
 
@@ -55,8 +55,8 @@ export function LensProvider({ children }) {
 
         });
 
-        if (defaultProfile.data.defaultProfile.id) {
-            return defaultProfile.data.defaultProfile.id;
+        if (defaultProfile.data.defaultProfile) {
+            return defaultProfile.data.defaultProfile;
         }
         else {
             return null;

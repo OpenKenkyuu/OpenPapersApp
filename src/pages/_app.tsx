@@ -11,8 +11,10 @@ import { chains, client } from '../wagmi';
 import Navbar from '../components/Navbar';
 
 import { LensProvider } from '../context/lensContext';
+// import { LensProvider } from '@lens-protocol/react';
+import { lensConfig } from '../LensConfig';
 import { ApolloProvider } from '@apollo/client';
-import { apolloClient } from '../lensApi';
+import { apolloClient } from '../LensApi'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = useState(false)

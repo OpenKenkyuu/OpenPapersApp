@@ -1,4 +1,3 @@
-import { empty } from "@apollo/client";
 import { useState } from "react";
 import DragAndDrop from "./DragAndDrop";
 import UploadButton from "./UploadButton";
