@@ -10,6 +10,9 @@ import { WagmiConfig } from 'wagmi';
 import { chains, client } from '../wagmi';
 import Navbar from '../components/Navbar';
 
+import { LensProvider } from '../context/lensContext';
+import { ApolloProvider } from '@apollo/client';
+import { apolloClient } from '../lensApi';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = useState(false)
@@ -17,18 +20,22 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={client}>
       <RainbowKitProvider chains={chains} modalSize="compact">
+        <ApolloProvider client={apolloClient}>
+          <LensProvider>
 
-        <NextHead>
-          <title>Open Papers Protocol</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        </NextHead>
+            <NextHead>
+              <title>Open Papers Protocol</title>
+              <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </NextHead>
 
-        <div className="font-jetbrains">
-          <Navbar />
-          {mounted && <Component {...pageProps} />}
-        </div>
+            <div className="font-jetbrains">
+              <Navbar />
+              {mounted && <Component {...pageProps} />}
+            </div>
 
-      </RainbowKitProvider>
+          </LensProvider>
+        </ApolloProvider>
+      </RainbowKitProvider >
     </WagmiConfig >
   )
 }

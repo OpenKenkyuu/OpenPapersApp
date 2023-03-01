@@ -1,7 +1,4 @@
-import Navbar from "../components/Navbar";
-
 import { useAccount } from "wagmi";
-import SignInLens from "../components/Profile/SignInLens";
 
 const Profile = () => {
     const { address } = useAccount();
@@ -16,7 +13,6 @@ const Profile = () => {
                     </div>
                 </div>
             </div>}
-            <SignInLens />
         </div>
     );
 };
