@@ -8,6 +8,7 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 import { WagmiConfig } from 'wagmi';
 import { chains, client } from '../wagmi';
+import Navbar from '../components/Navbar';
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -16,11 +17,17 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={client}>
       <RainbowKitProvider chains={chains} modalSize="compact">
+
         <NextHead>
           <title>Open Papers Protocol</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </NextHead>
-        {mounted && <Component {...pageProps} />}
+
+        <div className="font-jetbrains">
+          <Navbar />
+          {mounted && <Component {...pageProps} />}
+        </div>
+
       </RainbowKitProvider>
     </WagmiConfig >
   )

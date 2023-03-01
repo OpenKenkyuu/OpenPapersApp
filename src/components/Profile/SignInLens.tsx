@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { client, challenge, authenticate } from '../../api'
 import { useAccount, useProvider, useSigner, useSignMessage } from 'wagmi'
 
-export default function SignInLens() {
+const SignInLens = () => {
     /* local state variables to hold user's address and access token */
     const { address } = useAccount();
     const provider = useProvider();
@@ -47,7 +47,6 @@ export default function SignInLens() {
 
     return (
         <div>
-            { /* if the user has connected their wallet but has not yet authenticated, show them a login button */}
             {
                 address && !token && (
                     <div onClick={login}>
@@ -55,10 +54,11 @@ export default function SignInLens() {
                     </div>
                 )
             }
-            { /* once the user has authenticated, show them a success message */}
             {
                 address && token && <h2>Successfully signed in!</h2>
             }
         </div>
     )
 }
+
+export default SignInLens

@@ -7,7 +7,6 @@ const Read = () => {
 
     return (
         <div className="font-jetbrains">
-            <Navbar />
             {address && < div className="font-jetbrains" >
                 <div className="flex justify-center items-center">
                     <div className="bg-gray-200 rounded px-8 py-4">
