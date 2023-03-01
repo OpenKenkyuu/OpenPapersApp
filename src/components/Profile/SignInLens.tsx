@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { client, challenge, authenticate } from '../../api'
+import { client, challenge, authenticate } from '../../apis/api'
 import { useAccount, useProvider, useSigner, useSignMessage } from 'wagmi'
 
 export default function SignInLens() {

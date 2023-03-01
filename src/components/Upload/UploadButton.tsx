@@ -1,5 +1,3 @@
-import { useAccount } from "wagmi";
-
 type Props = {
     formData: {
         title: string;
@@ -11,8 +9,6 @@ type Props = {
 };
 
 const UploadButton = ({ formData }: Props) => {
-    const { address } = useAccount();
-
     const handleClick = () => {
         const { title, author, category, price, pdf } = formData;
 
