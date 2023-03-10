@@ -10,8 +10,8 @@ import { WagmiConfig } from 'wagmi';
 import { chains, client } from '../wagmi';
 import Navbar from '../components/Navbar';
 
-import { LensProvider } from '../context/lensContext';
-// import { LensProvider } from '@lens-protocol/react';
+// import { LensProvider } from '../context/lensContext';
+import { LensProvider } from '@lens-protocol/react';
 import { lensConfig } from '../LensConfig';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from '../LensApi'
@@ -23,8 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <WagmiConfig client={client}>
       <RainbowKitProvider chains={chains} modalSize="compact">
         <ApolloProvider client={apolloClient}>
-          <LensProvider>
-
+          <LensProvider config={lensConfig}>
             <NextHead>
               <title>Open Papers Protocol</title>
               <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -34,7 +33,6 @@ export default function App({ Component, pageProps }: AppProps) {
               <Navbar />
               {mounted && <Component {...pageProps} />}
             </div>
-
           </LensProvider>
         </ApolloProvider>
       </RainbowKitProvider >

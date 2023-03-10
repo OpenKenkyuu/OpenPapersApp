@@ -11,9 +11,9 @@ export const useLensContext = () => {
 
 export function LensProvider({ children }) {
     const [profileId, setProfileId] = useState();
-    const [token, setToken] = useState();
+    const [token, setToken] = useState<string>();
     const { address } = useAccount();
-    const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage()
+    const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage();
 
     const signIn = async function () {
         try {
@@ -24,21 +24,24 @@ export function LensProvider({ children }) {
                 },
             });
             signMessage(challengeInfo.data.challenge.text);
+            if (isError) {
+                console.log("Error signing message", isError);
+            }
             const authData = await apolloClient.mutate({
                 mutation: authenticate,
                 variables: {
                     address: address,
-                    signature: data,
+                    text: data,
                 },
             });
-
+            console.log("authData", authData);
             const {
                 data: {
                     authenticate: { accessToken },
                 },
             } = authData;
             setToken(accessToken);
-
+            console.log("accessToken", accessToken);
         } catch (error) {
             console.log("Error signing in", error);
         }
@@ -52,11 +55,10 @@ export function LensProvider({ children }) {
                     ethereumAddress: address,
                 },
             },
-
         });
-
+        console.log("defaultProfile", defaultProfile);
         if (defaultProfile.data.defaultProfile) {
-            return defaultProfile.data.defaultProfile;
+            return defaultProfile.data.defaultProfile.id;
         }
         else {
             return null;

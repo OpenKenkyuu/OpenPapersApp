@@ -1,11 +1,10 @@
 import { useAccount } from "wagmi";
-import { useActiveProfile } from '@lens-protocol/react';
+import ActiveLensProfile from "../components/Profile/ActiveLensProfile";
 
 import LensLogin from "../components/Profile/LensLogin";
 
 const Profile = () => {
     const { address } = useAccount();
-    const { data, error, loading } = useActiveProfile();
 
     return (
         <div className="font-jetbrains">
@@ -13,13 +12,7 @@ const Profile = () => {
                 <div className="mt-4">
                     <LensLogin />
                 </div>
-            </div >} : {
-                loading && <div>Loading...</div>
-            } : {
-                error && <div>Error: {error.message}</div>
-            } : {
-                data && <div>Welcome @ {data.handle}</div>
-            }
+            </div >}
         </div>
     );
 };
